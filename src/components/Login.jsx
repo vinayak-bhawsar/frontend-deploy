@@ -16,7 +16,7 @@ function Login() {
       password: data.password,
     };
     await axios
-      .post("https://bookstoreapp-master-ecsh.onrender.com", userInfo)
+      .post("https://bookstoreapp-master-ecsh.onrender.com/user/login", userInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data) {
