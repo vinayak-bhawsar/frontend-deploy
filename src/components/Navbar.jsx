@@ -38,7 +38,7 @@ function Navbar() {
   // ✅ Dynamic Nav Links
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Courses", path: "/courses" },
+    { name: "Course", path: "/course" },
     { name: "Contact", path: "/contact" },
     { name: "About", path: "/about" },
   ];
