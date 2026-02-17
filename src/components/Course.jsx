@@ -6,20 +6,29 @@ import { Link } from "react-router-dom";
 function Course() {
   const [book, setBook] = useState([]);
 
-  useEffect(() => {
-    const getBook = async () => {
-      try {
-        const res = await axios.get("https://dummyjson.com/products");
-        console.log(res.data.products);
+useEffect(() => {
+  const getBook = async () => {
+    try {
+      const res = await axios.get("https://dummyjson.com/products");
 
-        // DummyJSON data is inside "products"
-        setBook(res.data.products);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getBook();
-  }, []);
+      // Convert product into course format
+      const formattedCourses = res.data.products.slice(0, 8).map((item) => ({
+        id: item.id,
+        title: item.title + " Course",
+        description: item.description,
+        price: item.price,
+        thumbnail: item.thumbnail,
+        category: "Programming"
+      }));
+
+      setBook(formattedCourses);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  getBook();
+}, []);
 
   return (
     <>
